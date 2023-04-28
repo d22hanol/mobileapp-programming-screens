@@ -2,40 +2,37 @@ package com.example.screens;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class Screen2 extends AppCompatActivity {
+
     private TextView name;
 
     private Button button;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_2);
 
-        name = findViewById(R.id.Name);
+        name = findViewById(R.id.nameView);
 
-        final String dataName = name.getText().toString();
+        button = findViewById(R.id.goBack);
 
-        button = findViewById(R.id.add);
+        String username = getIntent().getStringExtra("keyname");
+
+        name.setText(username);
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, Screen2.class);
-                intent.putExtra("keyname", dataName);
-
-                startActivity(intent);
-
-
+                finish();
             }
         });
 
     }
 }
+
